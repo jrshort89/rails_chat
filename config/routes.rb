@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   get 'users/create'
   get 'users/destroy'
   get 'sessions/new'
-  get 'sessions/create'
+  post 'login', to: 'sessions#create'
   get 'sessions/destroy'
-  get 'new/create'
-  get 'new/destroy'
+  get 'message', to: 'messages#index'
+  post 'message', to: 'messages#create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   root "application#index"
+
+  mount ActionCable.server, at: '/cable'
 end
