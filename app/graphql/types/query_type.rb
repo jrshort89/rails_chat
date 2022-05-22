@@ -9,10 +9,17 @@ module Types
     field :message, MessageType, "Find a message by ID" do
       argument :id, ID
     end
+
+    field :all, [MessageType], "Find all messages" do
+    end
   
     # Then provide an implementation:
     def message(id:)
       Message.find(id)
+    end
+
+    def all
+      Message.all
     end
   end
 end
